@@ -1,0 +1,50 @@
+site_name: ProvaTopia API
+site_description: Documentação da API do ProvaTopia — exibir e gerar questões, com cobrança por uso.
+site_url: https://gui089.github.io/doc_provatopia/
+repo_url: https://github.com/Gui089/doc_provatopia
+repo_name: Gui089/doc_provatopia
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Introdução: index.md
+  - Autenticação: authentication.md
+  - Preços & Créditos: pricing.md
+  - Referência da API: api-reference.md
+  - Erros: errors.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
