@@ -1,0 +1,47 @@
+/* ProvaTopia — identidade preto & verde
+   Troque --pt-green pelo hex oficial da marca se tiver. */
+:root {
+  --pt-green:      #00e676;
+  --pt-green-deep: #00b85c;
+  --pt-black:      #0a0a0a;
+}
+
+/* Acento = verde da marca (links, hovers, botões) */
+[data-md-color-accent="green"] {
+  --md-accent-fg-color: var(--pt-green);
+}
+
+/* Header e tabs pretos, com filete verde embaixo */
+[data-md-color-primary="black"] .md-header,
+[data-md-color-primary="black"] .md-tabs {
+  background-color: var(--pt-black);
+}
+.md-header {
+  border-bottom: 2px solid var(--pt-green);
+}
+
+/* Links em verde nos dois temas */
+.md-typeset a { color: var(--pt-green-deep); }
+.md-typeset a:hover { color: var(--pt-green); }
+
+/* Dark mode = preto de verdade + acentos verdes */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color:        #0a0a0a;
+  --md-default-bg-color--light: #121212;
+  --md-code-bg-color:           #151515;
+  --md-primary-fg-color:        #0a0a0a;
+}
+[data-md-color-scheme="slate"] .md-typeset a { color: var(--pt-green); }
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__item--active > .md-nav__link {
+  color: var(--pt-green);
+}
+
+/* Detalhes verdes: seleção de texto, barra de rolagem do código, títulos de admonition */
+::selection { background: var(--pt-green); color: #000; }
+.md-typeset .md-typeset__table th { border-bottom-color: var(--pt-green); }
+
+/* Botão de busca / foco com o verde */
+.md-search__input:focus,
+.md-search__input:hover { color: inherit; }
+[data-md-color-scheme="slate"] .md-search__form { background-color: #1a1a1a; }
