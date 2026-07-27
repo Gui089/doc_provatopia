@@ -4,21 +4,24 @@ site_url: https://gui089.github.io/doc_provatopia/
 repo_url: https://github.com/Gui089/doc_provatopia
 repo_name: Gui089/doc_provatopia
 
+extra_css:
+  - stylesheets/extra.css
+
 theme:
   name: material
   language: pt-BR
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: black
+      accent: green
       toggle:
         icon: material/weather-night
         name: Modo escuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: black
+      accent: green
       toggle:
         icon: material/weather-sunny
         name: Modo claro
