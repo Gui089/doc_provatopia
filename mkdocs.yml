@@ -37,8 +37,9 @@ theme:
 nav:
   - Introdução: index.md
   - Autenticação: authentication.md
-  - Preços & Créditos: pricing.md
+  - Planos & Cobrança: plans-billing.md
   - Referência da API: api-reference.md
+  - Partner API (planejado): partner-api.md
   - Erros: errors.md
 
 markdown_extensions:

@@ -1,44 +1,58 @@
 # ProvaTopia API
 
-Bem-vindo à documentação da **API do ProvaTopia** — a API para **exibir** e **gerar questões** de prova, com **cobrança por uso** (modelo de créditos).
+Documentação da API do **ProvaTopia** — plataforma de estudos para **ENEM e vestibulares**: banco de questões, simulados, cadernos, redação com correção por IA, **revisão espaçada (FSRS)**, XP/ranking e planos premium.
 
-!!! note "Rascunho v0"
-    Versão inicial da documentação. Valores como domínio, tabela de preços e limites são **ilustrativos** e ainda serão confirmados. Nenhuma chave real aparece aqui — todos os exemplos usam placeholders (`pt_live_...`).
+!!! note "Duas camadas"
+    - **[API atual](api-reference.md)** — o que existe hoje: autenticação **JWT**, assinatura via **MercadoPago**. É o backend que o app consome.
+    - **[Partner API](partner-api.md)** — **planejada**: acesso de terceiros por **API key** (créditos/uso). Ainda **não** implementada — documentada como roadmap.
 
-## O que você pode fazer
-
-- **Exibir questões** de um banco existente, com filtros (disciplina, tópico, dificuldade, tipo).
-- **Gerar questões** novas por IA, sob demanda.
-- Acompanhar seu **consumo e saldo de créditos**.
+    Nenhuma chave/segredo real aparece nesta doc — todos os exemplos usam placeholders.
 
 ## Base URL
 
 ```
-https://api.provatopia.com/v1
+https://api.provatopia.com    # produção (a confirmar)
+http://localhost:3333          # desenvolvimento (atrás de túnel cloudflared/ngrok)
 ```
+
+## Autenticação em 30 segundos
+
+A API usa **JWT**. Você cria uma conta, faz login, recebe um `token` e o envia em todas as chamadas protegidas:
+
+```
+Authorization: Bearer <seu-jwt>
+```
+
+O token expira em **7 dias**. Detalhes em [Autenticação](authentication.md).
 
 ## Quickstart
 
-1. Pegue sua chave de API no painel (`pt_live_...`).
-2. Faça sua primeira chamada — listar questões:
-
 ```bash
-curl "https://api.provatopia.com/v1/questions?subject=aws-ai&limit=1" \
-  -H "Authorization: Bearer pt_live_xxxxxxxx"
-```
-
-3. Gere questões por IA:
-
-```bash
-curl -X POST https://api.provatopia.com/v1/questions/generate \
-  -H "Authorization: Bearer pt_live_xxxxxxxx" \
+# 1. Criar conta
+curl -X POST https://api.provatopia.com/user \
   -H "Content-Type: application/json" \
-  -d '{"topic":"Bedrock e RAG","count":5,"difficulty":"medium"}'
+  -d '{"name":"Ana","email":"ana@exemplo.com","password":"segredo123"}'
+
+# 2. Login → recebe { token, user }
+curl -X POST https://api.provatopia.com/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"ana@exemplo.com","password":"segredo123"}'
+
+# 3. Buscar questões (não respondidas ainda)
+curl "https://api.provatopia.com/questions?topic=Matemática&limit=5" \
+  -H "Authorization: Bearer <seu-jwt>"
+
+# 4. Enviar um simulado
+curl -X POST https://api.provatopia.com/quiz/submit \
+  -H "Authorization: Bearer <seu-jwt>" \
+  -H "Content-Type: application/json" \
+  -d '{"answers":[{"question_id":"uuid","user_answer":"C"}]}'
 ```
 
-## Próximos passos
+## Mapa
 
-- [Autenticação](authentication.md) — como usar sua chave de API
-- [Preços & Créditos](pricing.md) — quanto custa cada operação
+- [Autenticação](authentication.md) — registro, login, JWT, rate limits
+- [Planos & Cobrança](plans-billing.md) — free vs premium, MercadoPago
 - [Referência da API](api-reference.md) — todos os endpoints
-- [Erros](errors.md) — códigos e tratamento
+- [Partner API (planejado)](partner-api.md) — venda de acesso por key
+- [Erros](errors.md) — convenções de erro

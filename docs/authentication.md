@@ -1,27 +1,64 @@
 # Autenticação
 
-Toda requisição exige uma chave de API no header `Authorization`:
+A API usa **JWT** (JSON Web Token). Fluxo: criar conta → login → usar o `token` como Bearer.
 
-```
-Authorization: Bearer pt_live_xxxxxxxxxxxxxxxxxxxx
-```
+## Registro
 
-## Tipos de chave
+`POST /user` — público (rate-limited: 20 req / 15 min por IP)
 
-| Chave | Uso | Cobrança |
+| Campo | Tipo | Regras |
 |---|---|---|
-| `pt_test_...` | Sandbox — retorna dados fictícios | Não consome créditos |
-| `pt_live_...` | Produção | Consome créditos reais |
-
-- A chave identifica a **conta**, o **plano** e o **saldo de créditos**.
-- Requisição sem chave válida → `401 invalid_api_key`.
-
-!!! danger "Nunca exponha uma chave `pt_live_...`"
-    Não coloque a chave no front-end nem em repositório público. Use no **servidor** ou via **variável de ambiente**. Se vazar, revogue no painel e gere outra.
-
-## Exemplo
+| `name` | string | obrigatório, ≥ 2 chars |
+| `email` | string | obrigatório, e-mail válido (lowercased) |
+| `password` | string | obrigatório, ≥ 6 chars |
+| `plan` | string | opcional, default `"free"` |
 
 ```bash
-curl "https://api.provatopia.com/v1/questions?limit=1" \
-  -H "Authorization: Bearer pt_live_xxxxxxxx"
+curl -X POST https://api.provatopia.com/user \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Ana","email":"ana@exemplo.com","password":"segredo123"}'
 ```
+
+**`201`** → `{ "id": "uuid", "name": "Ana", "email": "ana@exemplo.com", "plan": "free", "xp": 0 }`
+(o `password` nunca é retornado)
+
+Erros: `400` nome/e-mail/senha inválidos · `409` e-mail já cadastrado.
+
+## Login
+
+`POST /auth/login` — público (rate-limited: 20 req / 15 min por IP)
+
+```bash
+curl -X POST https://api.provatopia.com/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"ana@exemplo.com","password":"segredo123"}'
+```
+
+**`200`**
+```json
+{
+  "token": "eyJhbGciOi...",
+  "user": {
+    "id": "uuid", "name": "Ana", "email": "ana@exemplo.com",
+    "plan": "free", "xp": 120,
+    "stats": { "totalQuestions": 40, "correctAnswers": 31, "quizzesCompleted": 5, "averageScore": 78 }
+  }
+}
+```
+
+Erros: `400 {"error":"Email and password are required"}` · `401` credenciais inválidas.
+
+## Usando o token
+
+Envie o JWT em toda rota protegida:
+
+```
+Authorization: Bearer eyJhbGciOi...
+```
+
+- Validade: **7 dias**.
+- Header ausente/malformado → `401 {"error":"Missing or invalid Authorization header"}`.
+- Token inválido/expirado → `401 {"error":"Invalid or expired token"}`.
+
+!!! warning "Rate limiting de credenciais"
+    `POST /user` e `POST /auth/login` aceitam **20 tentativas por IP a cada 15 min**; `POST /beta-signup`, **10 / 15 min**. Excedeu → `429 {"error":"Muitas tentativas. Tente novamente em alguns minutos."}`.
