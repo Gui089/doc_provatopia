@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://gui089.github.io/doc_provatopia/errors/">
       
       
-        <link rel="prev" href="../api-reference/">
+        <link rel="prev" href="../partner-api/">
       
       
       
@@ -316,14 +316,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../pricing/" class="md-nav__link">
+      <a href="../plans-billing/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Preços & Créditos
+    Planos & Cobrança
   
 
     
@@ -351,6 +351,33 @@
     
   
     Referência da API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../partner-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partner API (planejado)
   
 
     
@@ -430,10 +457,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#codigos" class="md-nav__link">
+  <a href="#codigos-comuns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Códigos
+        Códigos comuns
       
     </span>
   </a>
@@ -486,10 +513,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#codigos" class="md-nav__link">
+  <a href="#codigos-comuns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Códigos
+        Códigos comuns
       
     </span>
   </a>
@@ -528,62 +555,74 @@
 
 
 <h1 id="erros">Erros</h1>
-<p>Todos os erros seguem o mesmo formato JSON:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;billing_error&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;insufficient_credits&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Saldo de créditos insuficiente para gerar 5 questões.&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="codigos">Códigos</h2>
+<p>A maioria dos erros retorna JSON <code>{ "error": "&lt;mensagem&gt;" }</code>. O gate premium adiciona <code>"upgrade": true</code>.</p>
+<h2 id="codigos-comuns">Códigos comuns</h2>
 <table>
 <thead>
 <tr>
 <th>HTTP</th>
-<th><code>code</code></th>
 <th>Quando</th>
+<th>Corpo (exemplo)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>400</td>
-<td><code>invalid_request</code></td>
-<td>body/params inválidos</td>
+<td>Requisição inválida (body/params)</td>
+<td><code>{"error":"answers must be an array"}</code></td>
 </tr>
 <tr>
 <td>401</td>
-<td><code>invalid_api_key</code></td>
-<td>chave ausente ou incorreta</td>
+<td>Sem JWT / token inválido ou expirado</td>
+<td><code>{"error":"Missing or invalid Authorization header"}</code> · <code>{"error":"Invalid or expired token"}</code></td>
 </tr>
 <tr>
 <td>402</td>
-<td><code>insufficient_credits</code></td>
-<td>saldo insuficiente</td>
+<td>Recurso premium ou limite do free</td>
+<td><code>{"error":"Recurso exclusivo do Premium","upgrade":true}</code></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Sem permissão (ex.: apagar item de outro)</td>
+<td><code>{"error":"Você só pode apagar seus próprios comentários"}</code></td>
 </tr>
 <tr>
 <td>404</td>
-<td><code>not_found</code></td>
-<td>recurso inexistente</td>
+<td>Recurso não encontrado</td>
+<td><code>{"error":"Questão não encontrada"}</code></td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflito (e-mail/caderno duplicado)</td>
+<td><code>{"error":"Email already in use"}</code></td>
 </tr>
 <tr>
 <td>429</td>
-<td><code>rate_limited</code></td>
-<td>excedeu o rate limit</td>
+<td>Rate limit (login/registro/beta)</td>
+<td><code>{"error":"Muitas tentativas. Tente novamente em alguns minutos."}</code></td>
 </tr>
 <tr>
 <td>500</td>
-<td><code>internal_error</code></td>
-<td>falha interna</td>
+<td>Falha interna</td>
+<td><code>{"error":"Failed to fetch questions"}</code></td>
+</tr>
+<tr>
+<td>502</td>
+<td>IA indisponível (correção de redação)</td>
+<td><code>{"error":"..."}</code></td>
+</tr>
+<tr>
+<td>503</td>
+<td>MercadoPago não configurado</td>
+<td><code>{"error":"Pagamento indisponível..."}</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="boas-praticas">Boas práticas</h2>
 <ul>
-<li>Trate <code>429</code> respeitando o header <code>Retry-After</code>.</li>
-<li>Trate <code>402</code> direcionando o usuário para recarregar créditos.</li>
-<li>Nunca exponha a mensagem de erro crua com dados sensíveis ao usuário final.</li>
+<li>Trate <code>401</code> renovando o login (token expira em 7 dias).</li>
+<li>Trate <code>402</code> com <code>upgrade: true</code> oferecendo o Premium.</li>
+<li>Respeite o <code>Retry-After</code> nos <code>429</code>.</li>
 </ul>
 
 

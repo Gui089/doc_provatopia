@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://gui089.github.io/doc_provatopia/authentication/">
+        <link rel="canonical" href="https://gui089.github.io/doc_provatopia/partner-api/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../api-reference/">
       
       
-        <link rel="next" href="../plans-billing/">
+        <link rel="next" href="../errors/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Autenticação - ProvaTopia API</title>
+        <title>Partner API (planejado) - ProvaTopia API</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#autenticacao" class="md-skip">
+        <a href="#partner-api-planejado" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Autenticação
+              Partner API (planejado)
             
           </span>
         </div>
@@ -288,37 +288,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Autenticação
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
         
   
   
@@ -334,59 +307,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#registro" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Registro
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#login" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Login
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usando-o-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usando o token
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -449,10 +369,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../partner-api/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partner API (planejado)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -468,6 +415,131 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autenticacao-planejada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autenticação (planejada)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cobranca-planejada-creditos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cobrança (planejada) — créditos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-propostos-rascunho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints propostos (rascunho)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints propostos (rascunho)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-partnerquestions-servir-do-banco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /partner/questions — servir do banco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-partnerquestionsgenerate-gerar-por-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /partner/questions/generate — gerar por IA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-partneressaysgrade-correcao-de-redacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /partner/essays/grade — correção de redação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-partnerusage-saldo-e-consumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /partner/usage — saldo e consumo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decisoes-a-fechar-antes-de-construir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisões a fechar antes de construir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -526,10 +598,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#registro" class="md-nav__link">
+  <a href="#objetivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Registro
+        Objetivo
       
     </span>
   </a>
@@ -537,10 +609,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#login" class="md-nav__link">
+  <a href="#autenticacao-planejada" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Login
+        Autenticação (planejada)
       
     </span>
   </a>
@@ -548,10 +620,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#usando-o-token" class="md-nav__link">
+  <a href="#cobranca-planejada-creditos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usando o token
+        Cobrança (planejada) — créditos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints-propostos-rascunho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints propostos (rascunho)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Endpoints propostos (rascunho)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-partnerquestions-servir-do-banco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /partner/questions — servir do banco
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-partnerquestionsgenerate-gerar-por-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /partner/questions/generate — gerar por IA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-partneressaysgrade-correcao-de-redacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /partner/essays/grade — correção de redação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-partnerusage-saldo-e-consumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /partner/usage — saldo e consumo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decisoes-a-fechar-antes-de-construir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisões a fechar antes de construir
       
     </span>
   </a>
@@ -578,78 +722,65 @@
   
 
 
-<h1 id="autenticacao">Autenticação</h1>
-<p>A API usa <strong>JWT</strong> (JSON Web Token). Fluxo: criar conta → login → usar o <code>token</code> como Bearer.</p>
-<h2 id="registro">Registro</h2>
-<p><code>POST /user</code> — público (rate-limited: 20 req / 15 min por IP)</p>
+<h1 id="partner-api-planejado">Partner API (planejado)</h1>
+<div class="admonition warning">
+<p class="admonition-title">Status: PLANEJADO — ainda não implementado</p>
+<p>Esta página descreve um produto <strong>futuro</strong>: expor o conteúdo do ProvaTopia para <strong>terceiros</strong> via <strong>API key</strong>, com cobrança por uso. <strong>Nada aqui existe no backend atual</strong> — a API de hoje usa <a href="../authentication/">JWT de usuário</a> e assinatura <a href="../plans-billing/">MercadoPago</a>. Isto é o <strong>norte de design</strong>, não contrato vigente.</p>
+</div>
+<h2 id="objetivo">Objetivo</h2>
+<p>Permitir que outros produtos (cursinhos, apps, plataformas) integrem o <strong>banco de questões</strong> e a <strong>geração/correção por IA</strong> do ProvaTopia, comprando uma <strong>chave de API</strong> e pagando por <strong>créditos de uso</strong> — modelo estilo OpenAI/Anthropic.</p>
+<h2 id="autenticacao-planejada">Autenticação (planejada)</h2>
+<p>Diferente do JWT de usuário: uma <strong>chave de parceiro</strong>, emitida no painel.</p>
+<div class="highlight"><pre><span></span><code>Authorization: Bearer pt_live_xxxxxxxxxxxxxxxx
+</code></pre></div>
+<ul>
+<li><code>pt_test_...</code> → sandbox, sem cobrança.</li>
+<li><code>pt_live_...</code> → produção, consome créditos.</li>
+</ul>
+<h2 id="cobranca-planejada-creditos">Cobrança (planejada) — créditos</h2>
 <table>
 <thead>
 <tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Regras</th>
+<th>Operação</th>
+<th>Custo (créditos) — <em>ilustrativo</em></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>name</code></td>
-<td>string</td>
-<td>obrigatório, ≥ 2 chars</td>
+<td>Servir questões (<code>GET /partner/questions</code>)</td>
+<td>1 / requisição</td>
 </tr>
 <tr>
-<td><code>email</code></td>
-<td>string</td>
-<td>obrigatório, e-mail válido (lowercased)</td>
+<td>Gerar questões por IA (<code>POST /partner/questions/generate</code>)</td>
+<td>10 / questão</td>
 </tr>
 <tr>
-<td><code>password</code></td>
-<td>string</td>
-<td>obrigatório, ≥ 6 chars</td>
-</tr>
-<tr>
-<td><code>plan</code></td>
-<td>string</td>
-<td>opcional, default <code>"free"</code></td>
+<td>Corrigir redação (<code>POST /partner/essays/grade</code>)</td>
+<td>por redação</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/user<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;Ana&quot;,&quot;email&quot;:&quot;ana@exemplo.com&quot;,&quot;password&quot;:&quot;segredo123&quot;}&#39;</span>
-</code></pre></div>
-<p><strong><code>201</code></strong> → <code>{ "id": "uuid", "name": "Ana", "email": "ana@exemplo.com", "plan": "free", "xp": 0 }</code>
-(o <code>password</code> nunca é retornado)</p>
-<p>Erros: <code>400</code> nome/e-mail/senha inválidos · <code>409</code> e-mail já cadastrado.</p>
-<h2 id="login">Login</h2>
-<p><code>POST /auth/login</code> — público (rate-limited: 20 req / 15 min por IP)</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/auth/login<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;email&quot;:&quot;ana@exemplo.com&quot;,&quot;password&quot;:&quot;segredo123&quot;}&#39;</span>
-</code></pre></div>
-<p><strong><code>200</code></strong>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOi...&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ana@exemplo.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;plan&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;xp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;stats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;totalQuestions&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;correctAnswers&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;quizzesCompleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;averageScore&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></p>
-<p>Erros: <code>400 {"error":"Email and password are required"}</code> · <code>401</code> credenciais inválidas.</p>
-<h2 id="usando-o-token">Usando o token</h2>
-<p>Envie o JWT em toda rota protegida:</p>
-<div class="highlight"><pre><span></span><code>Authorization: Bearer eyJhbGciOi...
-</code></pre></div>
+<h2 id="endpoints-propostos-rascunho">Endpoints propostos (rascunho)</h2>
+<h3 id="get-partnerquestions-servir-do-banco"><code>GET /partner/questions</code> — servir do banco</h3>
+<p>Filtros por <code>topic</code>, <code>assunto</code>, <code>difficulty</code>, paginação. Retorna questões do acervo aprovado.</p>
+<h3 id="post-partnerquestionsgenerate-gerar-por-ia"><code>POST /partner/questions/generate</code> — gerar por IA</h3>
+<p>Body: <code>topic</code>, <code>count</code>, <code>difficulty</code>, <code>type</code>. Gera questões novas (reaproveita o pipeline de IA interno). Consome créditos por questão.</p>
+<h3 id="post-partneressaysgrade-correcao-de-redacao"><code>POST /partner/essays/grade</code> — correção de redação</h3>
+<p>Reaproveita o <code>essayGrader</code> (gpt-4o + RAG) exposto como serviço.</p>
+<h3 id="get-partnerusage-saldo-e-consumo"><code>GET /partner/usage</code> — saldo e consumo</h3>
+<p>Créditos restantes, consumo do período, plano do parceiro.</p>
+<h2 id="decisoes-a-fechar-antes-de-construir">Decisões a fechar antes de construir</h2>
 <ul>
-<li>Validade: <strong>7 dias</strong>.</li>
-<li>Header ausente/malformado → <code>401 {"error":"Missing or invalid Authorization header"}</code>.</li>
-<li>Token inválido/expirado → <code>401 {"error":"Invalid or expired token"}</code>.</li>
+<li>[ ] Emissão/rotação de chaves + escopos (read-only vs generate)</li>
+<li>[ ] Modelo de créditos ↔ preço (R$) e planos de parceiro</li>
+<li>[ ] Rate limits por chave</li>
+<li>[ ] Isolar o acervo exposto (o que pode ir para terceiros vs. conteúdo interno)</li>
+<li>[ ] Geração síncrona vs. assíncrona (webhook) para lotes grandes</li>
+<li>[ ] Termos de uso / atribuição do conteúdo</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Rate limiting de credenciais</p>
-<p><code>POST /user</code> e <code>POST /auth/login</code> aceitam <strong>20 tentativas por IP a cada 15 min</strong>; <code>POST /beta-signup</code>, <strong>10 / 15 min</strong>. Excedeu → <code>429 {"error":"Muitas tentativas. Tente novamente em alguns minutos."}</code>.</p>
-</div>
+<blockquote>
+<p>Quando decidir construir, esta página vira o spec inicial — os endpoints acima entram no backend sob o prefixo <code>/partner/*</code>, separados da API JWT do app.</p>
+</blockquote>
 
 
 

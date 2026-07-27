@@ -13,10 +13,10 @@
         <link rel="canonical" href="https://gui089.github.io/doc_provatopia/api-reference/">
       
       
-        <link rel="prev" href="../pricing/">
+        <link rel="prev" href="../plans-billing/">
       
       
-        <link rel="next" href="../errors/">
+        <link rel="next" href="../partner-api/">
       
       
         
@@ -318,14 +318,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../pricing/" class="md-nav__link">
+      <a href="../plans-billing/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Preços & Créditos
+    Planos & Cobrança
   
 
     
@@ -405,10 +405,790 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-questions-exibirlistar-questoes" class="md-nav__link">
+  <a href="#perfil-conta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /questions — exibir/listar questões
+        Perfil &amp; Conta
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perfil &amp; Conta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-authme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /auth/me 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /me 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-meentitlements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/entitlements 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questões
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Questões">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsbrowse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/browse 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/stats 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsidreport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/report 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsiddifficulty-rating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/difficulty-rating 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-questionsiddifficulty-rating-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /questions/:id/difficulty-rating 🔒 → 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsidbookmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/bookmark 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-questionsidbookmark-query-caderno-omitido-remove-de-todos-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /questions/:id/bookmark 🔒 — query caderno (omitido = remove de todos). 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidcomments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/comments 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsidcomments-body-body-11000-parentid-opcional-201-o-comentario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/comments 🔒 — body body (1–1000), parentId (opcional). 201 o comentário.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-commentsid-204-erros-403-nao-e-seu-404" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /comments/:id 🔒 — 204. Erros: 403 (não é seu), 404.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidnote-body-updatedat-nota-pessoal-na-questao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/note 🔒 → { body, updatedAt } (nota pessoal na questão).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-questionsidnote-body-body-4000-vazio-deleta-body-updatedat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /questions/:id/note 🔒 — body body (≤ 4000; vazio deleta). → { body, updatedAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidrelated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/related 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-megraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/graph 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cadernos-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cadernos &amp; Notas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cadernos &amp; Notas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-mecadernos-array-id-name-emoji-cover-description-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/cadernos 🔒 → array { id, name, emoji, cover, description, count }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mecadernos-body-name-80-obrigatorio-emoji-default-cover-sunsetoceanforestgrapecoralmono-description-201-erro-409-ja-existe-um-caderno-com-esse-nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/cadernos 🔒 — body name (≤ 80, obrigatório), emoji (default 📓), cover (sunset|ocean|forest|grape|coral|mono), description. 201. Erro: 409 Já existe um caderno com esse nome.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-mecadernosid-body-opcionais-name-emoji-cover-description-200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /me/cadernos/:id 🔒 — body opcionais name, emoji, cover, description. 200.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-mecadernosid-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /me/cadernos/:id 🔒 — 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mecadernosidquestions-body-question_id-201-ok-true-caderno-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/cadernos/:id/questions 🔒 — body question_id. 201 { "ok": true, "caderno": "&lt;name&gt;" }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mecadernoscadernoquestions-caderno-nome-array-de-question-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/cadernos/:caderno/questions 🔒 — (:caderno = nome). → array de question + note.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mecadernoscadernonotes-array-id-title-body-assuntos-linkedquestions-updatedat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/cadernos/:caderno/notes 🔒 → array { id, title, body, assuntos, linkedQuestions, updatedAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mecadernoscadernonotes-body-title-160-body-50000-assuntos-20-questionids-50-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/cadernos/:caderno/notes 🔒 — body title (≤160), body (≤50000), assuntos (≤20), questionIds (≤50). 201.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-menotesid-id-caderno-title-body-assuntos-questions-question-updatedat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/notes/:id 🔒 → { id, caderno, title, body, assuntos, questions: [question], updatedAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-menotesid-questionids-substitui-o-vinculo-200-ok-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /me/notes/:id 🔒 — questionIds substitui o vínculo. 200 { "ok": true }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-menotesid-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /me/notes/:id 🔒 — 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulados-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulados &amp; Quiz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulados &amp; Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-quizsubmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /quiz/submit 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revisao-espacada-fsrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revisão espaçada (FSRS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Revisão espaçada (FSRS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-mewrong-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/wrong-questions 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mereview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/review 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mereviewsubmit-body-answers-question_id-user_answer-sem-limite-diario-200-saved-correct-total-xpearned-xptotal-scheduled-question_id-iscorrect-nextreviewat-retrievability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/review/submit 🔒 — body answers: [ { question_id, user_answer } ] (sem limite diário). 200 → { saved, correct, total, xpEarned, xpTotal, scheduled: [ { question_id, isCorrect, nextReviewAt, retrievability } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mequiz-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/quiz-history 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-meretention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/retention 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plano-de-estudo-metas-desafio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de estudo, Metas &amp; Desafio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plano de estudo, Metas &amp; Desafio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-mestudy-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/study-plan 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mestudy-plancomplete-sem-body-200-streak-best-completedtoday-true-xpawarded-50-xp-idempotentedia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/study-plan/complete 🔒 ⭐ — sem body. 200 → { streak, best, completedToday: true, xpAwarded } (+50 XP, idempotente/dia).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-medaily-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/daily-challenge 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-medaily-challengesubmit-body-user_answer-letra-ae-200-alreadydone-iscorrect-correctanswer-streak-best-xpawarded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/daily-challenge/submit 🔒 — body user_answer (letra A–E). 200 → { alreadyDone, isCorrect, correctAnswer, streak, best, xpAwarded }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-megoal-goal-null-options-course-university-cutoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/goal 🔒 ⭐ → { goal: {...}|null, options: [ { course, university, cutoff } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-megoal-body-course-university-obrigatorios-vestibular-cutoff-examdate-200-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /me/goal 🔒 ⭐ — body course, university (obrigatórios), vestibular, cutoff, examDate. 200 → { goal }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mescore-estimate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/score-estimate 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-essaysconfig-vestibulares-key-name-redacao-max-instrucoes-competencias-enem-1000-pts-5-competencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /essays/config 🔒 → { vestibulares: [ { key, name, redacao: { max, instrucoes, competencias: [...] } } ] } (ENEM: 1000 pts, 5 competências).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-essays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /essays 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-essays-array-id-vestibular-tema-total-max-createdat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /essays 🔒 → array { id, vestibular, tema, total, max, createdAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-essaysid-redacao-completa-com-competencias-e-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /essays/:id 🔒 → redação completa com competencias e feedback.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#social-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Social &amp; Feed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Social &amp; Feed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-posts-query-page-10pag-page-hasmore-items-id-body-topic-createdat-author-authorid-ismine-likes-comments-likedbyme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /posts 🔒 — query page (10/pág). → { page, hasMore, items: [ { id, body, topic, createdAt, author, authorId, isMine, likes, comments, likedByMe } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-posts-body-body-2000-topic-opcional-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /posts 🔒 — body body (≤ 2000), topic (opcional). 201.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-postsid-204-403-se-nao-for-seu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /posts/:id 🔒 — 204 (403 se não for seu).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-postsidlike-likes-likedbyme-true-delete-postsidlike-likes-likedbyme-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /posts/:id/like 🔒 → { likes, likedByMe: true } · DELETE /posts/:id/like 🔒 → { likes, likedByMe: false }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-postsidcomments-array-de-comentarios-post-postsidcomments-body-body-1000-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /posts/:id/comments 🔒 → array de comentários · POST /posts/:id/comments 🔒 — body body (≤ 1000). 201.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-feed-activity-kindcommentnew_question-max-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /feed 🔒 → { activity: [ {kind:"comment"|"new_question", ...} ] } (máx. 20).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-feedquestions-query-page-5pag-page-hasmore-items-question-commentcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /feed/questions 🔒 — query page (5/pág). → { page, hasMore, items: [ { ...question, commentCount } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provas-topicos-ranking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provas, Tópicos &amp; Ranking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provas, Tópicos &amp; Ranking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-exams-array-id-name-year-day-area-source-questioncount-so-publicadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /exams 🔒 → array { id, name, year, day, area, source, questionCount } (só publicadas).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-examsidquestions-exam-questions-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /exams/:id/questions 🔒 → { exam: {...}, questions: [question] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-topics-array-topic-available-questoes-ainda-nao-respondidas-por-topico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /topics 🔒 → array { topic, available } (questões ainda não respondidas por tópico).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ranking-top-rank-id-name-xp-totalquestions-correctanswers-accuracy-isme-me-totalusers-top-50-por-xp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /ranking 🔒 → { top: [ { rank, id, name, xp, totalQuestions, correctAnswers, accuracy, isMe } ], me, totalUsers } (top 50 por XP).
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cobranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cobrança
       
     </span>
   </a>
@@ -416,46 +1196,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-questionsid-questao-unica" class="md-nav__link">
+  <a href="#beta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /questions/{id} — questão única
+        Beta
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-beta-signup-rate-limited-1015min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /beta-signup 🔓 (rate-limited 10/15min)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#post-questionsgenerate-gerar-questoes-por-ia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /questions/generate — gerar questões por IA
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-subjects-catalogo-gratis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /subjects — catálogo (grátis)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-usage-saldo-e-consumo-gratis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /usage — saldo e consumo (grátis)
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -463,6 +1227,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../partner-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partner API (planejado)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -521,10 +1312,790 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-questions-exibirlistar-questoes" class="md-nav__link">
+  <a href="#perfil-conta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /questions — exibir/listar questões
+        Perfil &amp; Conta
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perfil &amp; Conta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-authme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /auth/me 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /me 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-meentitlements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/entitlements 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Questões
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Questões">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsbrowse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/browse 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidstats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/stats 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsidreport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/report 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsiddifficulty-rating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/difficulty-rating 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-questionsiddifficulty-rating-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /questions/:id/difficulty-rating 🔒 → 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsidbookmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/bookmark 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-questionsidbookmark-query-caderno-omitido-remove-de-todos-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /questions/:id/bookmark 🔒 — query caderno (omitido = remove de todos). 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidcomments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/comments 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-questionsidcomments-body-body-11000-parentid-opcional-201-o-comentario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /questions/:id/comments 🔒 — body body (1–1000), parentId (opcional). 201 o comentário.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-commentsid-204-erros-403-nao-e-seu-404" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /comments/:id 🔒 — 204. Erros: 403 (não é seu), 404.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidnote-body-updatedat-nota-pessoal-na-questao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/note 🔒 → { body, updatedAt } (nota pessoal na questão).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-questionsidnote-body-body-4000-vazio-deleta-body-updatedat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /questions/:id/note 🔒 — body body (≤ 4000; vazio deleta). → { body, updatedAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-questionsidrelated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /questions/:id/related 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-megraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/graph 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cadernos-notas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cadernos &amp; Notas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cadernos &amp; Notas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-mecadernos-array-id-name-emoji-cover-description-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/cadernos 🔒 → array { id, name, emoji, cover, description, count }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mecadernos-body-name-80-obrigatorio-emoji-default-cover-sunsetoceanforestgrapecoralmono-description-201-erro-409-ja-existe-um-caderno-com-esse-nome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/cadernos 🔒 — body name (≤ 80, obrigatório), emoji (default 📓), cover (sunset|ocean|forest|grape|coral|mono), description. 201. Erro: 409 Já existe um caderno com esse nome.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-mecadernosid-body-opcionais-name-emoji-cover-description-200" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /me/cadernos/:id 🔒 — body opcionais name, emoji, cover, description. 200.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-mecadernosid-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /me/cadernos/:id 🔒 — 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mecadernosidquestions-body-question_id-201-ok-true-caderno-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/cadernos/:id/questions 🔒 — body question_id. 201 { "ok": true, "caderno": "&lt;name&gt;" }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mecadernoscadernoquestions-caderno-nome-array-de-question-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/cadernos/:caderno/questions 🔒 — (:caderno = nome). → array de question + note.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mecadernoscadernonotes-array-id-title-body-assuntos-linkedquestions-updatedat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/cadernos/:caderno/notes 🔒 → array { id, title, body, assuntos, linkedQuestions, updatedAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mecadernoscadernonotes-body-title-160-body-50000-assuntos-20-questionids-50-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/cadernos/:caderno/notes 🔒 — body title (≤160), body (≤50000), assuntos (≤20), questionIds (≤50). 201.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-menotesid-id-caderno-title-body-assuntos-questions-question-updatedat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/notes/:id 🔒 → { id, caderno, title, body, assuntos, questions: [question], updatedAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch-menotesid-questionids-substitui-o-vinculo-200-ok-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PATCH /me/notes/:id 🔒 — questionIds substitui o vínculo. 200 { "ok": true }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-menotesid-204" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /me/notes/:id 🔒 — 204.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulados-quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulados &amp; Quiz
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulados &amp; Quiz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-quizsubmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /quiz/submit 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revisao-espacada-fsrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revisão espaçada (FSRS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Revisão espaçada (FSRS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-mewrong-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/wrong-questions 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mereview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/review 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mereviewsubmit-body-answers-question_id-user_answer-sem-limite-diario-200-saved-correct-total-xpearned-xptotal-scheduled-question_id-iscorrect-nextreviewat-retrievability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/review/submit 🔒 — body answers: [ { question_id, user_answer } ] (sem limite diário). 200 → { saved, correct, total, xpEarned, xpTotal, scheduled: [ { question_id, isCorrect, nextReviewAt, retrievability } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mequiz-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/quiz-history 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-meretention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/retention 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plano-de-estudo-metas-desafio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plano de estudo, Metas &amp; Desafio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plano de estudo, Metas &amp; Desafio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-mestudy-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/study-plan 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-mestudy-plancomplete-sem-body-200-streak-best-completedtoday-true-xpawarded-50-xp-idempotentedia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/study-plan/complete 🔒 ⭐ — sem body. 200 → { streak, best, completedToday: true, xpAwarded } (+50 XP, idempotente/dia).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-medaily-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/daily-challenge 🔒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-medaily-challengesubmit-body-user_answer-letra-ae-200-alreadydone-iscorrect-correctanswer-streak-best-xpawarded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /me/daily-challenge/submit 🔒 — body user_answer (letra A–E). 200 → { alreadyDone, isCorrect, correctAnswer, streak, best, xpAwarded }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-megoal-goal-null-options-course-university-cutoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/goal 🔒 ⭐ → { goal: {...}|null, options: [ { course, university, cutoff } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-megoal-body-course-university-obrigatorios-vestibular-cutoff-examdate-200-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUT /me/goal 🔒 ⭐ — body course, university (obrigatórios), vestibular, cutoff, examDate. 200 → { goal }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-mescore-estimate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/score-estimate 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-essaysconfig-vestibulares-key-name-redacao-max-instrucoes-competencias-enem-1000-pts-5-competencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /essays/config 🔒 → { vestibulares: [ { key, name, redacao: { max, instrucoes, competencias: [...] } } ] } (ENEM: 1000 pts, 5 competências).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-essays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /essays 🔒 ⭐
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-essays-array-id-vestibular-tema-total-max-createdat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /essays 🔒 → array { id, vestibular, tema, total, max, createdAt }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-essaysid-redacao-completa-com-competencias-e-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /essays/:id 🔒 → redação completa com competencias e feedback.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#social-feed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Social &amp; Feed
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Social &amp; Feed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-posts-query-page-10pag-page-hasmore-items-id-body-topic-createdat-author-authorid-ismine-likes-comments-likedbyme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /posts 🔒 — query page (10/pág). → { page, hasMore, items: [ { id, body, topic, createdAt, author, authorId, isMine, likes, comments, likedByMe } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-posts-body-body-2000-topic-opcional-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /posts 🔒 — body body (≤ 2000), topic (opcional). 201.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-postsid-204-403-se-nao-for-seu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DELETE /posts/:id 🔒 — 204 (403 se não for seu).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-postsidlike-likes-likedbyme-true-delete-postsidlike-likes-likedbyme-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /posts/:id/like 🔒 → { likes, likedByMe: true } · DELETE /posts/:id/like 🔒 → { likes, likedByMe: false }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-postsidcomments-array-de-comentarios-post-postsidcomments-body-body-1000-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /posts/:id/comments 🔒 → array de comentários · POST /posts/:id/comments 🔒 — body body (≤ 1000). 201.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-feed-activity-kindcommentnew_question-max-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /feed 🔒 → { activity: [ {kind:"comment"|"new_question", ...} ] } (máx. 20).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-feedquestions-query-page-5pag-page-hasmore-items-question-commentcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /feed/questions 🔒 — query page (5/pág). → { page, hasMore, items: [ { ...question, commentCount } ] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provas-topicos-ranking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provas, Tópicos &amp; Ranking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Provas, Tópicos &amp; Ranking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-exams-array-id-name-year-day-area-source-questioncount-so-publicadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /exams 🔒 → array { id, name, year, day, area, source, questionCount } (só publicadas).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-examsidquestions-exam-questions-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /exams/:id/questions 🔒 → { exam: {...}, questions: [question] }.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-topics-array-topic-available-questoes-ainda-nao-respondidas-por-topico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /topics 🔒 → array { topic, available } (questões ainda não respondidas por tópico).
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ranking-top-rank-id-name-xp-totalquestions-correctanswers-accuracy-isme-me-totalusers-top-50-por-xp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /ranking 🔒 → { top: [ { rank, id, name, xp, totalQuestions, correctAnswers, accuracy, isMe } ], me, totalUsers } (top 50 por XP).
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cobranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cobrança
       
     </span>
   </a>
@@ -532,46 +2103,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-questionsid-questao-unica" class="md-nav__link">
+  <a href="#beta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GET /questions/{id} — questão única
+        Beta
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beta">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-beta-signup-rate-limited-1015min" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /beta-signup 🔓 (rate-limited 10/15min)
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#post-questionsgenerate-gerar-questoes-por-ia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        POST /questions/generate — gerar questões por IA
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-subjects-catalogo-gratis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /subjects — catálogo (grátis)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-usage-saldo-e-consumo-gratis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /usage — saldo e consumo (grátis)
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -596,182 +2151,114 @@
 
 
 <h1 id="referencia-da-api">Referência da API</h1>
-<p>Base URL: <code>https://api.provatopia.com/v1</code> · Autenticação: header <code>Authorization: Bearer pt_live_...</code> (<a href="../authentication/">detalhes</a>).</p>
+<p>Base URL: <code>https://api.provatopia.com</code> · Auth: <code>Authorization: Bearer &lt;jwt&gt;</code> (exceto rotas públicas).</p>
+<p><strong>Legenda:</strong> 🔓 pública · 🔒 requer JWT · ⭐ requer <strong>Premium</strong>.</p>
+<p>O objeto <strong><code>question</code></strong> (retornado por vários endpoints) tem: <code>id</code>, <code>topic</code>, <code>assunto</code>, <code>difficulty</code>, <code>support_text</code>, <code>question_text</code>, <code>options</code> (JSON), <code>correct_answer</code> (ex.: <code>"C"</code>), <code>explanation</code>, <code>figure_svg</code>, <code>status</code>, <code>exam_id</code>, <code>exam_number</code>, <code>created_at</code>.</p>
 <hr />
-<h2 id="get-questions-exibirlistar-questoes"><code>GET /questions</code> — exibir/listar questões</h2>
-<p>Retorna questões do banco, com filtros e paginação.</p>
-<p><strong>Query params</strong></p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Tipo</th>
-<th>Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>subject</code></td>
-<td>string</td>
-<td>filtra por disciplina (ex.: <code>aws-ai</code>)</td>
-</tr>
-<tr>
-<td><code>topic</code></td>
-<td>string</td>
-<td>filtra por tópico</td>
-</tr>
-<tr>
-<td><code>difficulty</code></td>
-<td>enum</td>
-<td><code>easy</code> | <code>medium</code> | <code>hard</code></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>enum</td>
-<td><code>multiple_choice</code> | <code>true_false</code> | <code>open</code></td>
-</tr>
-<tr>
-<td><code>language</code></td>
-<td>string</td>
-<td><code>pt-BR</code> (default) | <code>en-US</code></td>
-</tr>
-<tr>
-<td><code>limit</code></td>
-<td>int</td>
-<td>1–100 (default 20)</td>
-</tr>
-<tr>
-<td><code>cursor</code></td>
-<td>string</td>
-<td>paginação (opaco)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Requisição</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;https://api.provatopia.com/v1/questions?subject=aws-ai&amp;difficulty=medium&amp;limit=2&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer pt_live_xxx&quot;</span>
-</code></pre></div>
-<p><strong>Resposta <code>200</code></strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;q_9f2a...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aws-ai&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Amazon Bedrock&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;difficulty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;multiple_choice&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pt-BR&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Qual serviço permite acessar múltiplos foundation models por uma única API?&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Amazon SageMaker&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Amazon Bedrock&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Amazon EC2&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS Lambda&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;answer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;explanation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bedrock oferece FMs de vários provedores via API única.&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;bedrock&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;foundation-models&quot;</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;provatopia&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;next_cursor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJvZmZzZXQiOjJ9&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;has_more&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;credits_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="perfil-conta">Perfil &amp; Conta</h2>
+<h3 id="get-authme"><code>GET /auth/me</code> 🔒</h3>
+<p>Perfil do usuário logado. <strong><code>200</code></strong> → <code>{ id, name, email, plan, xp, stats: { totalQuestions, correctAnswers, quizzesCompleted, averageScore } }</code>. Erros: <code>401</code>, <code>404 User not found</code>.</p>
+<h3 id="put-me"><code>PUT /me</code> 🔒</h3>
+<p>Atualiza perfil. Body (ao menos um): <code>name</code>, <code>email</code>, <code>password</code> (aplicado só se ≥ 6 chars). <strong><code>200</code></strong> → <code>{ id, name, email, plan, xp }</code>. Erros: <code>400 Nothing to update</code>, <code>409 Email already in use</code>.</p>
+<h3 id="get-meentitlements"><code>GET /me/entitlements</code> 🔒</h3>
+<p>Plano, entitlements, uso e assinatura — ver <a href="../plans-billing/#consultar-entitlements">Planos &amp; Cobrança</a>.</p>
 <hr />
-<h2 id="get-questionsid-questao-unica"><code>GET /questions/{id}</code> — questão única</h2>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://api.provatopia.com/v1/questions/q_9f2a...<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer pt_live_xxx&quot;</span>
-</code></pre></div>
-<p>Retorna o mesmo objeto <code>question</code> do endpoint anterior. Não encontrada → <code>404 not_found</code>.</p>
+<h2 id="questoes">Questões</h2>
+<h3 id="get-questions"><code>GET /questions</code> 🔒</h3>
+<p>Lista questões <strong>ainda não respondidas</strong> pelo usuário. Query: <code>topic</code>, <code>difficulty</code>, <code>status</code> (default <code>approved</code>), <code>limit</code>, <code>randomize</code>/<code>random</code> (<code>"true"</code>). <strong><code>200</code></strong> → array de <code>question</code>.</p>
+<h3 id="get-questionsbrowse"><code>GET /questions/browse</code> 🔒</h3>
+<p>Navegação paginada (10/página). Query: <code>topic</code>, <code>assunto</code>, <code>difficulty</code>, <code>hasFigure</code> (<code>true</code>/<code>false</code>), <code>search</code>, <code>status</code> (<code>all</code>|<code>unanswered</code>|<code>wrong</code>), <code>page</code>. <strong><code>200</code></strong> → <code>{ page, pageSize: 10, total, totalPages, items: [ { ...question, commentCount, bookmarked } ] }</code>.</p>
+<h3 id="get-questionsidstats"><code>GET /questions/:id/stats</code> 🔒</h3>
+<p>Estatísticas da questão. <strong><code>200</code></strong> → <code>{ total, correct, accuracy, distribution: {A,B,C,D,E}, perceivedDifficulty: { facil, medio, dificil, total, mine } }</code>.</p>
+<h3 id="post-questionsidreport"><code>POST /questions/:id/report</code> 🔒</h3>
+<p>Reportar problema. Body: <code>reason</code> (<code>errada|ambigua|gabarito|offtopic|outro</code>), <code>detail</code> (≤ 500). <strong><code>201</code></strong> <code>{ "ok": true }</code>. Erro: <code>400 Motivo inválido</code>.</p>
+<h3 id="post-questionsiddifficulty-rating"><code>POST /questions/:id/difficulty-rating</code> 🔒</h3>
+<p>Votar dificuldade percebida. Body: <code>rating</code> (<code>facil|medio|dificil</code>). <strong><code>200</code></strong> <code>{ "ok": true, "rating": "medio" }</code>.</p>
+<h3 id="delete-questionsiddifficulty-rating-204"><code>DELETE /questions/:id/difficulty-rating</code> 🔒 → <strong><code>204</code></strong>.</h3>
+<h3 id="post-questionsidbookmark"><code>POST /questions/:id/bookmark</code> 🔒</h3>
+<p>Salvar em um caderno. Body: <code>caderno</code> (opcional, default <code>"Salvos"</code>). <strong><code>201</code></strong> <code>{ "ok": true, "caderno": "Salvos" }</code>.</p>
+<h3 id="delete-questionsidbookmark-query-caderno-omitido-remove-de-todos-204"><code>DELETE /questions/:id/bookmark</code> 🔒 — query <code>caderno</code> (omitido = remove de todos). <strong><code>204</code></strong>.</h3>
+<h3 id="get-questionsidcomments"><code>GET /questions/:id/comments</code> 🔒</h3>
+<p>Comentários (1 nível de resposta). <strong><code>200</code></strong> → array <code>{ id, body, createdAt, author, authorId, isMine, parentId, replies: [...] }</code>.</p>
+<h3 id="post-questionsidcomments-body-body-11000-parentid-opcional-201-o-comentario"><code>POST /questions/:id/comments</code> 🔒 — body <code>body</code> (1–1000), <code>parentId</code> (opcional). <strong><code>201</code></strong> o comentário.</h3>
+<h3 id="delete-commentsid-204-erros-403-nao-e-seu-404"><code>DELETE /comments/:id</code> 🔒 — <strong><code>204</code></strong>. Erros: <code>403</code> (não é seu), <code>404</code>.</h3>
+<h3 id="get-questionsidnote-body-updatedat-nota-pessoal-na-questao"><code>GET /questions/:id/note</code> 🔒 → <code>{ body, updatedAt }</code> (nota pessoal na questão).</h3>
+<h3 id="put-questionsidnote-body-body-4000-vazio-deleta-body-updatedat"><code>PUT /questions/:id/note</code> 🔒 — body <code>body</code> (≤ 4000; vazio deleta). → <code>{ body, updatedAt }</code>.</h3>
+<h3 id="get-questionsidrelated"><code>GET /questions/:id/related</code> 🔒</h3>
+<p>Questões relacionadas (mesmo assunto/tópico). <strong><code>200</code></strong> → <code>{ assunto, topic, items: [question] }</code>.</p>
+<h3 id="get-megraph"><code>GET /me/graph</code> 🔒 ⭐</h3>
+<p>Grafo de conhecimento. <strong><code>200</code></strong> → <code>{ topics: [], nodes: [ { id, topic, assunto, total, accuracy } ] }</code>.</p>
 <hr />
-<h2 id="post-questionsgenerate-gerar-questoes-por-ia"><code>POST /questions/generate</code> — gerar questões por IA</h2>
-<p>Gera novas questões sob demanda. <strong>Consome créditos por questão gerada</strong> (ver <a href="../pricing/">Preços</a>).</p>
-<p><strong>Body</strong></p>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Obrigatório</th>
-<th>Descrição</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>topic</code></td>
-<td>sim</td>
-<td>assunto das questões</td>
-</tr>
-<tr>
-<td><code>count</code></td>
-<td>sim</td>
-<td>quantas gerar (máx. 20 por chamada)</td>
-</tr>
-<tr>
-<td><code>difficulty</code></td>
-<td>não</td>
-<td><code>easy</code> | <code>medium</code> | <code>hard</code> (default <code>medium</code>)</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>não</td>
-<td>default <code>multiple_choice</code></td>
-</tr>
-<tr>
-<td><code>language</code></td>
-<td>não</td>
-<td>default <code>pt-BR</code></td>
-</tr>
-<tr>
-<td><code>with_explanation</code></td>
-<td>não</td>
-<td>inclui explicação (default <code>true</code>)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Requisição</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/v1/questions/generate<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer pt_live_xxx&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;topic&quot;:&quot;Bedrock e RAG&quot;,&quot;count&quot;:5,&quot;difficulty&quot;:&quot;medium&quot;}&#39;</span>
-</code></pre></div>
-<p><strong>Resposta <code>200</code></strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;q_gen_1&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;answer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;explanation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;credits_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;credits_remaining&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4930</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="cadernos-notas">Cadernos &amp; Notas</h2>
+<h3 id="get-mecadernos-array-id-name-emoji-cover-description-count"><code>GET /me/cadernos</code> 🔒 → array <code>{ id, name, emoji, cover, description, count }</code>.</h3>
+<h3 id="post-mecadernos-body-name-80-obrigatorio-emoji-default-cover-sunsetoceanforestgrapecoralmono-description-201-erro-409-ja-existe-um-caderno-com-esse-nome"><code>POST /me/cadernos</code> 🔒 — body <code>name</code> (≤ 80, obrigatório), <code>emoji</code> (default 📓), <code>cover</code> (<code>sunset|ocean|forest|grape|coral|mono</code>), <code>description</code>. <strong><code>201</code></strong>. Erro: <code>409 Já existe um caderno com esse nome</code>.</h3>
+<h3 id="patch-mecadernosid-body-opcionais-name-emoji-cover-description-200"><code>PATCH /me/cadernos/:id</code> 🔒 — body opcionais <code>name</code>, <code>emoji</code>, <code>cover</code>, <code>description</code>. <strong><code>200</code></strong>.</h3>
+<h3 id="delete-mecadernosid-204"><code>DELETE /me/cadernos/:id</code> 🔒 — <strong><code>204</code></strong>.</h3>
+<h3 id="post-mecadernosidquestions-body-question_id-201-ok-true-caderno-name"><code>POST /me/cadernos/:id/questions</code> 🔒 — body <code>question_id</code>. <strong><code>201</code></strong> <code>{ "ok": true, "caderno": "&lt;name&gt;" }</code>.</h3>
+<h3 id="get-mecadernoscadernoquestions-caderno-nome-array-de-question-note"><code>GET /me/cadernos/:caderno/questions</code> 🔒 — (<code>:caderno</code> = <strong>nome</strong>). → array de <code>question</code> + <code>note</code>.</h3>
+<h3 id="get-mecadernoscadernonotes-array-id-title-body-assuntos-linkedquestions-updatedat"><code>GET /me/cadernos/:caderno/notes</code> 🔒 → array <code>{ id, title, body, assuntos, linkedQuestions, updatedAt }</code>.</h3>
+<h3 id="post-mecadernoscadernonotes-body-title-160-body-50000-assuntos-20-questionids-50-201"><code>POST /me/cadernos/:caderno/notes</code> 🔒 — body <code>title</code> (≤160), <code>body</code> (≤50000), <code>assuntos</code> (≤20), <code>questionIds</code> (≤50). <strong><code>201</code></strong>.</h3>
+<h3 id="get-menotesid-id-caderno-title-body-assuntos-questions-question-updatedat"><code>GET /me/notes/:id</code> 🔒 → <code>{ id, caderno, title, body, assuntos, questions: [question], updatedAt }</code>.</h3>
+<h3 id="patch-menotesid-questionids-substitui-o-vinculo-200-ok-true"><code>PATCH /me/notes/:id</code> 🔒 — <code>questionIds</code> substitui o vínculo. <strong><code>200</code></strong> <code>{ "ok": true }</code>.</h3>
+<h3 id="delete-menotesid-204"><code>DELETE /me/notes/:id</code> 🔒 — <strong><code>204</code></strong>.</h3>
 <hr />
-<h2 id="get-subjects-catalogo-gratis"><code>GET /subjects</code> — catálogo (grátis)</h2>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aws-ai&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS AI Practitioner&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;topics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Bedrock&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;SageMaker&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;IA Responsável&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;credits_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="simulados-quiz">Simulados &amp; Quiz</h2>
+<h3 id="post-quizsubmit"><code>POST /quiz/submit</code> 🔒</h3>
+<p>Envia respostas de um simulado. Cada envio = 1 simulado (free: <strong>máx. 1/dia</strong>). Body: <code>answers: [ { question_id, user_answer } ]</code>.
+<strong><code>200</code></strong> → <code>{ saved, correct, total, xpEarned, xpTotal }</code>.
+Erros: <code>400</code> formato inválido · <code>402 {"error":"Limite de 1 simulado(s) por dia no plano grátis...","upgrade":true}</code>.</p>
 <hr />
-<h2 id="get-usage-saldo-e-consumo-gratis"><code>GET /usage</code> — saldo e consumo (grátis)</h2>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;plan&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pro&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;credits_remaining&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4930</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;credits_included&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;period_start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-07-01&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;period_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-07-31&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;credits_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">70</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="revisao-espacada-fsrs">Revisão espaçada (FSRS)</h2>
+<h3 id="get-mewrong-questions"><code>GET /me/wrong-questions</code> 🔒</h3>
+<p>Erros que estão "vencidos" para revisão (pior retenção primeiro). <strong><code>200</code></strong> → array <code>{ question, lastAttemptAt, wrongStreak, nextReviewAt, retrievability }</code>.</p>
+<h3 id="get-mereview"><code>GET /me/review</code> 🔒</h3>
+<p>Fila de revisão (todas as respondidas que venceram no FSRS). <strong><code>200</code></strong> → <code>{ dueCount, items: [...] }</code>.</p>
+<h3 id="post-mereviewsubmit-body-answers-question_id-user_answer-sem-limite-diario-200-saved-correct-total-xpearned-xptotal-scheduled-question_id-iscorrect-nextreviewat-retrievability"><code>POST /me/review/submit</code> 🔒 — body <code>answers: [ { question_id, user_answer } ]</code> (sem limite diário). <strong><code>200</code></strong> → <code>{ saved, correct, total, xpEarned, xpTotal, scheduled: [ { question_id, isCorrect, nextReviewAt, retrievability } ] }</code>.</h3>
+<h3 id="get-mequiz-history"><code>GET /me/quiz-history</code> 🔒</h3>
+<p>Sessões agrupadas. <strong><code>200</code></strong> → array <code>{ id, subject, date, score, total }</code>.</p>
+<h3 id="get-meretention"><code>GET /me/retention</code> 🔒 ⭐</h3>
+<p>Análise de retenção. <strong><code>200</code></strong> → <code>{ totalAnswered, totalErrors, accuracy, dueCount, byMateria: [...], byAssunto: [...], weakest: [...], curve: [...], curveStabilityDays }</code>.</p>
+<hr />
+<h2 id="plano-de-estudo-metas-desafio">Plano de estudo, Metas &amp; Desafio</h2>
+<h3 id="get-mestudy-plan"><code>GET /me/study-plan</code> 🔒 ⭐</h3>
+<p>Sessão guiada do dia (~10 questões). <strong><code>200</code></strong> → <code>{ goal, score, streak, session: { targetCount, estMinutes, questions: [...], items: [ { questionId, bucket: "revisar|reforcar|avancar", reason } ] } }</code>.</p>
+<h3 id="post-mestudy-plancomplete-sem-body-200-streak-best-completedtoday-true-xpawarded-50-xp-idempotentedia"><code>POST /me/study-plan/complete</code> 🔒 ⭐ — sem body. <strong><code>200</code></strong> → <code>{ streak, best, completedToday: true, xpAwarded }</code> (+50 XP, idempotente/dia).</h3>
+<h3 id="get-medaily-challenge"><code>GET /me/daily-challenge</code> 🔒</h3>
+<p>Questão do dia (igual para todos). <strong><code>200</code></strong> → <code>{ date, question, doneToday, myAnswer, isCorrect, streak, best }</code>.</p>
+<h3 id="post-medaily-challengesubmit-body-user_answer-letra-ae-200-alreadydone-iscorrect-correctanswer-streak-best-xpawarded"><code>POST /me/daily-challenge/submit</code> 🔒 — body <code>user_answer</code> (letra A–E). <strong><code>200</code></strong> → <code>{ alreadyDone, isCorrect, correctAnswer, streak, best, xpAwarded }</code>.</h3>
+<h3 id="get-megoal-goal-null-options-course-university-cutoff"><code>GET /me/goal</code> 🔒 ⭐ → <code>{ goal: {...}|null, options: [ { course, university, cutoff } ] }</code>.</h3>
+<h3 id="put-megoal-body-course-university-obrigatorios-vestibular-cutoff-examdate-200-goal"><code>PUT /me/goal</code> 🔒 ⭐ — body <code>course</code>, <code>university</code> (obrigatórios), <code>vestibular</code>, <code>cutoff</code>, <code>examDate</code>. <strong><code>200</code></strong> → <code>{ goal }</code>.</h3>
+<h3 id="get-mescore-estimate"><code>GET /me/score-estimate</code> 🔒 ⭐</h3>
+<p>Estimativa de nota (estilo TRI, pela dificuldade da comunidade). <strong><code>200</code></strong> → <code>{ answered, areas: [ { area, score, answered } ], overall, cutoffs: [ { course, university, year, cutoff, gap, reached } ], disclaimer }</code>.</p>
+<hr />
+<h2 id="redacao">Redação</h2>
+<h3 id="get-essaysconfig-vestibulares-key-name-redacao-max-instrucoes-competencias-enem-1000-pts-5-competencias"><code>GET /essays/config</code> 🔒 → <code>{ vestibulares: [ { key, name, redacao: { max, instrucoes, competencias: [...] } } ] }</code> (ENEM: 1000 pts, 5 competências).</h3>
+<h3 id="post-essays"><code>POST /essays</code> 🔒 ⭐</h3>
+<p>Corrige uma redação por IA (gpt-4o + RAG). Body: <code>vestibular</code> (default <code>enem</code>), <code>tema</code> (obrigatório), <code>body</code> (≥ 50 palavras, ≤ 8000). <strong><code>201</code></strong> → <code>{ id, total, max, competencias: [ { id, titulo, score, max, feedback } ], comentarioGeral, pontosFortes, aMelhorar, sugestaoReescrita, tema, createdAt }</code>. Erros: <code>400</code> tema/tamanho · <code>502</code> IA indisponível.</p>
+<h3 id="get-essays-array-id-vestibular-tema-total-max-createdat"><code>GET /essays</code> 🔒 → array <code>{ id, vestibular, tema, total, max, createdAt }</code>.</h3>
+<h3 id="get-essaysid-redacao-completa-com-competencias-e-feedback"><code>GET /essays/:id</code> 🔒 → redação completa com <code>competencias</code> e <code>feedback</code>.</h3>
+<hr />
+<h2 id="social-feed">Social &amp; Feed</h2>
+<h3 id="get-posts-query-page-10pag-page-hasmore-items-id-body-topic-createdat-author-authorid-ismine-likes-comments-likedbyme"><code>GET /posts</code> 🔒 — query <code>page</code> (10/pág). → <code>{ page, hasMore, items: [ { id, body, topic, createdAt, author, authorId, isMine, likes, comments, likedByMe } ] }</code>.</h3>
+<h3 id="post-posts-body-body-2000-topic-opcional-201"><code>POST /posts</code> 🔒 — body <code>body</code> (≤ 2000), <code>topic</code> (opcional). <strong><code>201</code></strong>.</h3>
+<h3 id="delete-postsid-204-403-se-nao-for-seu"><code>DELETE /posts/:id</code> 🔒 — <strong><code>204</code></strong> (<code>403</code> se não for seu).</h3>
+<h3 id="post-postsidlike-likes-likedbyme-true-delete-postsidlike-likes-likedbyme-false"><code>POST /posts/:id/like</code> 🔒 → <code>{ likes, likedByMe: true }</code> · <code>DELETE /posts/:id/like</code> 🔒 → <code>{ likes, likedByMe: false }</code>.</h3>
+<h3 id="get-postsidcomments-array-de-comentarios-post-postsidcomments-body-body-1000-201"><code>GET /posts/:id/comments</code> 🔒 → array de comentários · <code>POST /posts/:id/comments</code> 🔒 — body <code>body</code> (≤ 1000). <strong><code>201</code></strong>.</h3>
+<h3 id="get-feed-activity-kindcommentnew_question-max-20"><code>GET /feed</code> 🔒 → <code>{ activity: [ {kind:"comment"|"new_question", ...} ] }</code> (máx. 20).</h3>
+<h3 id="get-feedquestions-query-page-5pag-page-hasmore-items-question-commentcount"><code>GET /feed/questions</code> 🔒 — query <code>page</code> (5/pág). → <code>{ page, hasMore, items: [ { ...question, commentCount } ] }</code>.</h3>
+<hr />
+<h2 id="provas-topicos-ranking">Provas, Tópicos &amp; Ranking</h2>
+<h3 id="get-exams-array-id-name-year-day-area-source-questioncount-so-publicadas"><code>GET /exams</code> 🔒 → array <code>{ id, name, year, day, area, source, questionCount }</code> (só publicadas).</h3>
+<h3 id="get-examsidquestions-exam-questions-question"><code>GET /exams/:id/questions</code> 🔒 → <code>{ exam: {...}, questions: [question] }</code>.</h3>
+<h3 id="get-topics-array-topic-available-questoes-ainda-nao-respondidas-por-topico"><code>GET /topics</code> 🔒 → array <code>{ topic, available }</code> (questões ainda não respondidas por tópico).</h3>
+<h3 id="get-ranking-top-rank-id-name-xp-totalquestions-correctanswers-accuracy-isme-me-totalusers-top-50-por-xp"><code>GET /ranking</code> 🔒 → <code>{ top: [ { rank, id, name, xp, totalQuestions, correctAnswers, accuracy, isMe } ], me, totalUsers }</code> (top 50 por XP).</h3>
+<hr />
+<h2 id="cobranca">Cobrança</h2>
+<p>Ver <a href="../plans-billing/">Planos &amp; Cobrança</a>: <code>POST /billing/checkout</code> 🔒 · <code>POST /billing/webhook</code> 🔓 (MercadoPago) · <code>POST /billing/cancel</code> 🔒.</p>
+<hr />
+<h2 id="beta">Beta</h2>
+<h3 id="post-beta-signup-rate-limited-1015min"><code>POST /beta-signup</code> 🔓 (rate-limited 10/15min)</h3>
+<p>Inscrição na landing. Body: <code>name</code> (2–120), <code>email</code>, <code>exam</code> (<code>enem|fuvest|unicamp|uerj|outro</code>, default <code>outro</code>). <strong><code>201</code></strong> <code>{ "ok": true }</code>.</p>
 
 
 

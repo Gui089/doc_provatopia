@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://gui089.github.io/doc_provatopia/pricing/">
+        <link rel="canonical" href="https://gui089.github.io/doc_provatopia/plans-billing/">
       
       
         <link rel="prev" href="../authentication/">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Preços & Créditos - ProvaTopia API</title>
+        <title>Planos & Cobrança - ProvaTopia API</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#precos-creditos" class="md-skip">
+        <a href="#planos-cobranca" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Preços & Créditos
+              Planos & Cobrança
             
           </span>
         </div>
@@ -334,7 +334,7 @@
   <span class="md-ellipsis">
     
   
-    Preços & Créditos
+    Planos & Cobrança
   
 
     
@@ -352,7 +352,7 @@
   <span class="md-ellipsis">
     
   
-    Preços & Créditos
+    Planos & Cobrança
   
 
     
@@ -378,10 +378,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#custo-por-operacao" class="md-nav__link">
+  <a href="#planos-e-entitlements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Custo por operação
+        Planos e entitlements
       
     </span>
   </a>
@@ -389,10 +389,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#planos-exemplo" class="md-nav__link">
+  <a href="#precos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planos (exemplo)
+        Preços
       
     </span>
   </a>
@@ -400,24 +400,80 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#como-o-consumo-e-reportado" class="md-nav__link">
+  <a href="#fluxo-de-assinatura" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como o consumo é reportado
+        Fluxo de assinatura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluxo de assinatura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-billingcheckout-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /billing/checkout — JWT
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#post-billingwebhook-publico-callback-do-mercadopago" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate limiting
+        POST /billing/webhook — público (callback do MercadoPago)
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-billingcancel-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /billing/cancel — JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consultar-entitlements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consultar entitlements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consultar entitlements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-meentitlements-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/entitlements — JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -444,6 +500,33 @@
     
   
     Referência da API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../partner-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partner API (planejado)
   
 
     
@@ -510,10 +593,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#custo-por-operacao" class="md-nav__link">
+  <a href="#planos-e-entitlements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Custo por operação
+        Planos e entitlements
       
     </span>
   </a>
@@ -521,10 +604,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#planos-exemplo" class="md-nav__link">
+  <a href="#precos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planos (exemplo)
+        Preços
       
     </span>
   </a>
@@ -532,24 +615,80 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#como-o-consumo-e-reportado" class="md-nav__link">
+  <a href="#fluxo-de-assinatura" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como o consumo é reportado
+        Fluxo de assinatura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fluxo de assinatura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-billingcheckout-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /billing/checkout — JWT
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#post-billingwebhook-publico-callback-do-mercadopago" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rate limiting
+        POST /billing/webhook — público (callback do MercadoPago)
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-billingcancel-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POST /billing/cancel — JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consultar-entitlements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consultar entitlements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consultar entitlements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-meentitlements-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /me/entitlements — JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -573,102 +712,90 @@
   
 
 
-<h1 id="precos-creditos">Preços &amp; Créditos</h1>
-<p>A API cobra por uso via <strong>créditos</strong>. Cada chave tem um saldo por plano, e cada chamada consome créditos.</p>
-<h2 id="custo-por-operacao">Custo por operação</h2>
+<h1 id="planos-cobranca">Planos &amp; Cobrança</h1>
+<p>O ProvaTopia tem dois planos. O acesso pago é uma <strong>assinatura</strong> processada pelo <strong>MercadoPago</strong> (não é cobrança por chamada de API).</p>
+<h2 id="planos-e-entitlements">Planos e entitlements</h2>
 <table>
 <thead>
 <tr>
-<th>Operação</th>
-<th>Custo (créditos)</th>
-<th>Observação</th>
+<th>Recurso</th>
+<th>Free</th>
+<th>Premium</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>GET /questions</code></td>
-<td><strong>1</strong> por requisição</td>
-<td>leitura barata</td>
-</tr>
-<tr>
-<td><code>GET /questions/{id}</code></td>
+<td>Simulados por dia</td>
 <td><strong>1</strong></td>
-<td>leitura unitária</td>
+<td>ilimitado</td>
 </tr>
 <tr>
-<td><code>POST /questions/generate</code></td>
-<td><strong>10</strong> por questão gerada</td>
-<td>custo de IA</td>
+<td>Desempenho (retenção / curva de esquecimento)</td>
+<td>❌</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><code>GET /subjects</code> · <code>GET /usage</code></td>
-<td><strong>0</strong></td>
-<td>metadados grátis</td>
+<td>Banco de questões completo</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Revisão espaçada (FSRS)</td>
+<td>❌</td>
+<td>✅</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Valores ilustrativos</p>
-<p>A tabela acima e os planos abaixo são um rascunho inicial e serão confirmados.</p>
-</div>
-<h2 id="planos-exemplo">Planos (exemplo)</h2>
+<p>Rotas premium respondem <code>402 {"error":"Recurso exclusivo do Premium","upgrade":true}</code> para quem não é assinante. São elas: <code>GET /me/graph</code>, <code>POST /essays</code>, <code>GET /me/retention</code>, <code>GET+POST /me/study-plan*</code>, <code>GET+PUT /me/goal</code>, <code>GET /me/score-estimate</code>.</p>
+<h2 id="precos">Preços</h2>
+<p>Valores em <strong>centavos de BRL</strong> (padrão da API — o front converte na renderização):</p>
 <table>
 <thead>
 <tr>
-<th>Plano</th>
-<th>Créditos/mês</th>
+<th>Ciclo</th>
+<th><code>amount</code></th>
+<th>Exibição</th>
+<th>Equivalente/mês</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Free</td>
-<td>100</td>
+<td><code>monthly</code></td>
+<td><code>2490</code></td>
+<td>R$ 24,90/mês</td>
+<td>R$ 24,90</td>
 </tr>
 <tr>
-<td>Pro</td>
-<td>5.000</td>
-</tr>
-<tr>
-<td>Scale</td>
-<td>50.000</td>
+<td><code>annual</code></td>
+<td><code>14900</code></td>
+<td>R$ 149,00/ano</td>
+<td>~R$ 12,42</td>
 </tr>
 </tbody>
 </table>
-<h2 id="como-o-consumo-e-reportado">Como o consumo é reportado</h2>
-<p>Cada resposta traz o consumo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;credits_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;credits_remaining&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4930</span><span class="w"> </span><span class="p">}</span>
+<h2 id="fluxo-de-assinatura">Fluxo de assinatura</h2>
+<h3 id="post-billingcheckout-jwt"><code>POST /billing/checkout</code> — JWT</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/billing/checkout<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;jwt&gt;&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;cycle&quot;:&quot;annual&quot;}&#39;</span>
 </code></pre></div>
-<p>E nos headers:</p>
-<div class="highlight"><pre><span></span><code>X-Credits-Remaining: 4930
+<p><strong><code>200</code></strong> → <code>{ "checkoutUrl": "https://www.mercadopago.com/..." }</code> — redirecione o usuário para essa URL.</p>
+<p>Erros: <code>400 {"error":"cycle deve ser 'monthly' ou 'annual'"}</code> · <code>503</code> MercadoPago não configurado no servidor.</p>
+<h3 id="post-billingwebhook-publico-callback-do-mercadopago"><code>POST /billing/webhook</code> — público (callback do MercadoPago)</h3>
+<p>Endpoint interno que o MercadoPago chama. Em pagamento aprovado, ativa o premium do usuário (casado por <code>external_reference</code> = <code>user_id</code>). Sempre responde <code>200</code> para o provedor não reprocessar. <strong>Não é chamado pelo cliente.</strong></p>
+<h3 id="post-billingcancel-jwt"><code>POST /billing/cancel</code> — JWT</h3>
+<p>Cancela imediatamente: plano → <code>free</code>, assinatura → <code>cancelled</code>.</p>
+<p><strong><code>200</code></strong> → <code>{ "ok": true, "plan": "free" }</code></p>
+<h2 id="consultar-entitlements">Consultar entitlements</h2>
+<h3 id="get-meentitlements-jwt"><code>GET /me/entitlements</code> — JWT</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;plan&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;premium&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;entitlements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;dailySimulados&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;desempenho&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;bancoCompleto&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;revisaoFSRS&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;simuladosToday&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;simuladosRemaining&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;subscription&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cycle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;annual&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;periodEnd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2027-07-24T00:00:00.000Z&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;prices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;monthly&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2490</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nt">&quot;annual&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14900</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<ul>
-<li>Saldo insuficiente → <code>402 insufficient_credits</code>.</li>
-<li>Consulte o saldo a qualquer momento em <a href="../api-reference/#55-get-usage-saldo-e-consumo"><code>GET /usage</code></a>.</li>
-</ul>
-<h2 id="rate-limiting">Rate limiting</h2>
-<table>
-<thead>
-<tr>
-<th>Grupo</th>
-<th>Limite</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Leitura (<code>GET /questions*</code>)</td>
-<td>60 req/min</td>
-</tr>
-<tr>
-<td>Geração (<code>POST /questions/generate</code>)</td>
-<td>10 req/min</td>
-</tr>
-</tbody>
-</table>
-<p>Headers de resposta:</p>
-<div class="highlight"><pre><span></span><code>X-RateLimit-Limit: 60
-X-RateLimit-Remaining: 57
-</code></pre></div>
-<p>Estouro → <code>429 rate_limited</code> + <code>Retry-After: &lt;segundos&gt;</code>.</p>
 
 
 

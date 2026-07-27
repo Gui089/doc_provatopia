@@ -322,10 +322,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#o-que-voce-pode-fazer" class="md-nav__link">
+  <a href="#base-url" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O que você pode fazer
+        Base URL
       
     </span>
   </a>
@@ -333,10 +333,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#base-url" class="md-nav__link">
+  <a href="#autenticacao-em-30-segundos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base URL
+        Autenticação em 30 segundos
       
     </span>
   </a>
@@ -355,10 +355,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proximos-passos" class="md-nav__link">
+  <a href="#mapa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Próximos passos
+        Mapa
       
     </span>
   </a>
@@ -407,14 +407,14 @@
   
   
     <li class="md-nav__item">
-      <a href="pricing/" class="md-nav__link">
+      <a href="plans-billing/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Preços & Créditos
+    Planos & Cobrança
   
 
     
@@ -442,6 +442,33 @@
     
   
     Referência da API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="partner-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Partner API (planejado)
   
 
     
@@ -508,10 +535,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#o-que-voce-pode-fazer" class="md-nav__link">
+  <a href="#base-url" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O que você pode fazer
+        Base URL
       
     </span>
   </a>
@@ -519,10 +546,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#base-url" class="md-nav__link">
+  <a href="#autenticacao-em-30-segundos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Base URL
+        Autenticação em 30 segundos
       
     </span>
   </a>
@@ -541,10 +568,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proximos-passos" class="md-nav__link">
+  <a href="#mapa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Próximos passos
+        Mapa
       
     </span>
   </a>
@@ -572,42 +599,52 @@
 
 
 <h1 id="provatopia-api">ProvaTopia API</h1>
-<p>Bem-vindo à documentação da <strong>API do ProvaTopia</strong> — a API para <strong>exibir</strong> e <strong>gerar questões</strong> de prova, com <strong>cobrança por uso</strong> (modelo de créditos).</p>
+<p>Documentação da API do <strong>ProvaTopia</strong> — plataforma de estudos para <strong>ENEM e vestibulares</strong>: banco de questões, simulados, cadernos, redação com correção por IA, <strong>revisão espaçada (FSRS)</strong>, XP/ranking e planos premium.</p>
 <div class="admonition note">
-<p class="admonition-title">Rascunho v0</p>
-<p>Versão inicial da documentação. Valores como domínio, tabela de preços e limites são <strong>ilustrativos</strong> e ainda serão confirmados. Nenhuma chave real aparece aqui — todos os exemplos usam placeholders (<code>pt_live_...</code>).</p>
-</div>
-<h2 id="o-que-voce-pode-fazer">O que você pode fazer</h2>
+<p class="admonition-title">Duas camadas</p>
 <ul>
-<li><strong>Exibir questões</strong> de um banco existente, com filtros (disciplina, tópico, dificuldade, tipo).</li>
-<li><strong>Gerar questões</strong> novas por IA, sob demanda.</li>
-<li>Acompanhar seu <strong>consumo e saldo de créditos</strong>.</li>
+<li><strong><a href="api-reference/">API atual</a></strong> — o que existe hoje: autenticação <strong>JWT</strong>, assinatura via <strong>MercadoPago</strong>. É o backend que o app consome.</li>
+<li><strong><a href="partner-api/">Partner API</a></strong> — <strong>planejada</strong>: acesso de terceiros por <strong>API key</strong> (créditos/uso). Ainda <strong>não</strong> implementada — documentada como roadmap.</li>
 </ul>
+<p>Nenhuma chave/segredo real aparece nesta doc — todos os exemplos usam placeholders.</p>
+</div>
 <h2 id="base-url">Base URL</h2>
-<div class="highlight"><pre><span></span><code>https://api.provatopia.com/v1
+<div class="highlight"><pre><span></span><code>https://api.provatopia.com    # produção (a confirmar)
+http://localhost:3333          # desenvolvimento (atrás de túnel cloudflared/ngrok)
 </code></pre></div>
+<h2 id="autenticacao-em-30-segundos">Autenticação em 30 segundos</h2>
+<p>A API usa <strong>JWT</strong>. Você cria uma conta, faz login, recebe um <code>token</code> e o envia em todas as chamadas protegidas:</p>
+<div class="highlight"><pre><span></span><code>Authorization: Bearer &lt;seu-jwt&gt;
+</code></pre></div>
+<p>O token expira em <strong>7 dias</strong>. Detalhes em <a href="authentication/">Autenticação</a>.</p>
 <h2 id="quickstart">Quickstart</h2>
-<ol>
-<li>Pegue sua chave de API no painel (<code>pt_live_...</code>).</li>
-<li>Faça sua primeira chamada — listar questões:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;https://api.provatopia.com/v1/questions?subject=aws-ai&amp;limit=1&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer pt_live_xxxxxxxx&quot;</span>
-</code></pre></div>
-<ol>
-<li>Gere questões por IA:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/v1/questions/generate<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer pt_live_xxxxxxxx&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Criar conta</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/user<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;topic&quot;:&quot;Bedrock e RAG&quot;,&quot;count&quot;:5,&quot;difficulty&quot;:&quot;medium&quot;}&#39;</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;name&quot;:&quot;Ana&quot;,&quot;email&quot;:&quot;ana@exemplo.com&quot;,&quot;password&quot;:&quot;segredo123&quot;}&#39;</span>
+
+<span class="c1"># 2. Login → recebe { token, user }</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/auth/login<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;email&quot;:&quot;ana@exemplo.com&quot;,&quot;password&quot;:&quot;segredo123&quot;}&#39;</span>
+
+<span class="c1"># 3. Buscar questões (não respondidas ainda)</span>
+curl<span class="w"> </span><span class="s2">&quot;https://api.provatopia.com/questions?topic=Matemática&amp;limit=5&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;seu-jwt&gt;&quot;</span>
+
+<span class="c1"># 4. Enviar um simulado</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://api.provatopia.com/quiz/submit<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;seu-jwt&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;answers&quot;:[{&quot;question_id&quot;:&quot;uuid&quot;,&quot;user_answer&quot;:&quot;C&quot;}]}&#39;</span>
 </code></pre></div>
-<h2 id="proximos-passos">Próximos passos</h2>
+<h2 id="mapa">Mapa</h2>
 <ul>
-<li><a href="authentication/">Autenticação</a> — como usar sua chave de API</li>
-<li><a href="pricing/">Preços &amp; Créditos</a> — quanto custa cada operação</li>
+<li><a href="authentication/">Autenticação</a> — registro, login, JWT, rate limits</li>
+<li><a href="plans-billing/">Planos &amp; Cobrança</a> — free vs premium, MercadoPago</li>
 <li><a href="api-reference/">Referência da API</a> — todos os endpoints</li>
-<li><a href="errors/">Erros</a> — códigos e tratamento</li>
+<li><a href="partner-api/">Partner API (planejado)</a> — venda de acesso por key</li>
+<li><a href="errors/">Erros</a> — convenções de erro</li>
 </ul>
 
 
